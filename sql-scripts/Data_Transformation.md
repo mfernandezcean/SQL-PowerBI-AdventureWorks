@@ -88,9 +88,10 @@ ORDER BY TotalSales DESC;
 | Medium           |              561.0  |                     577  |  $            78,951.0  |  $            136.8   |
 
 ---
-```sql
 -- 📌 Total Sales by Product Category (Including 'No Category')
 -- Groups products by category and sums total sales, ensuring all products are included.
+```sql
+
 
 SELECT 
     COALESCE(c.EnglishProductCategoryName, 'No Category') AS Category,
