@@ -49,3 +49,24 @@ ORDER BY TotalSpent DESC;
 12307	|Brad	|She	|13173.19
 12296	|Francisco	|Sara	|13164.64
 11433	|Maurice	|Shan	|12909.67
+
+---
+
+```sql
+SELECT Top 10 
+    s.SalesOrderNumber,
+    s.OrderDate,
+    c.CustomerKey,
+    c.FirstName,
+    c.LastName,
+    g.SalesTerritoryRegion,
+    g.SalesTerritoryCountry,
+    s.SalesAmount,
+    s.TaxAmt,
+    s.Freight
+FROM FactInternetSales s
+JOIN DimCustomer c ON s.CustomerKey = c.CustomerKey
+JOIN DimSalesTerritory g ON s.SalesTerritoryKey = g.SalesTerritoryKey
+ORDER BY s.OrderDate DESC;
+```
+
