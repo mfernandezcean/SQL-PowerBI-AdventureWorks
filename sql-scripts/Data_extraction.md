@@ -135,3 +135,30 @@ ORDER BY c.EnglishProductCategoryName, sc.EnglishProductSubcategoryName, p.Engli
 | 5          | Blade           | NA    | 0            | 0         | No Subcategory | No Category |
 | 13         | Chain Stays     | NA    | 0            | 0         | No Subcategory | No Category |
 
+---
+
+```sql
+SELECT 
+    g.GeographyKey,
+    g.CountryRegionCode AS Country,
+    g.StateProvinceName AS State,
+    g.City,
+    SUM(s.SalesAmount) AS TotalSales
+FROM FactInternetSales s
+JOIN DimCustomer c ON s.CustomerKey = c.CustomerKey
+JOIN DimGeography g ON c.GeographyKey = g.GeographyKey
+GROUP BY g.GeographyKey, g.CountryRegionCode, g.StateProvinceName, g.City
+ORDER BY TotalSales DESC;
+```
+| GeographyKey | Country | State           | City        | TotalSales       |
+|--------------|---------|-----------------|-------------|------------------|
+| 19           | AU      | New South Wales | Wollongong  |  $   338,913.47  |
+| 40           | AU      | Victoria        | Warrnambool |  $   327,036.37  |
+| 32           | AU      | Victoria        | Bendigo     |  $   314,568.72  |
+| 4            | AU      | New South Wales | Goulburn    |  $   310,875.90  |
+| 298          | US      | California      | Bellflower  |  $   302,278.81  |
+| 20           | AU      | Queensland      | Brisbane    |  $   295,353.58  |
+| 27           | AU      | Queensland      | Townsville  |  $   285,486.91  |
+| 34           | AU      | Victoria        | Geelong     |  $   283,802.18  |
+| 21           | AU      | Queensland      | Caloundra   |  $   281,986.34  |
+| 18           | AU      | New South Wales | Sydney      |  $   280,983.31  |
