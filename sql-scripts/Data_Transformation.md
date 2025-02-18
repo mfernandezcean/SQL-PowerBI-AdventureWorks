@@ -88,10 +88,18 @@ ORDER BY TotalSales DESC;
 | Medium           |              561.0  |                     577  |  $            78,951.0  |  $            136.8   |
 
 ---
--- 📌 Total Sales by Product Category (Including 'No Category')
--- Groups products by category and sums total sales, ensuring all products are included.
-```sql
 
+## 📌 Total Sales by Product Category (Including 'No Category')  
+
+This query **groups products by category** and **calculates total sales**, ensuring that even products without a category are included.  
+
+### **🔹 Why This Matters?**  
+✅ Helps **identify best-selling product categories** 📊  
+✅ Ensures **we don’t lose sales from unclassified products**  
+✅ Supports **better inventory and sales forecasting**  
+
+```sql
+-- 📌 Total Sales by Product Category (Including 'No Category')
 
 SELECT 
     COALESCE(c.EnglishProductCategoryName, 'No Category') AS Category,
