@@ -42,3 +42,12 @@ WITH CleanCustomers AS (
     FROM DimCustomer
 )
 SELECT * FROM CleanCustomers;
+```
+
+| CustomerKey | FirstName | LastName | Gender | EmailAddress                   | TotalChildren | DateFirstPurchase |
+|-------------|-----------|----------|--------|--------------------------------|---------------|-------------------|
+| 11000       | Jon       | Yang     | M      | jon24@adventure-works.com      | 2             | 1/19/2020         |
+| 11001       | Eugene    | Huang    | M      | eugene10@adventure-works.com   | 3             | 1/15/2020         |
+| 11002       | Ruben     | Torres   | M      | ruben35@adventure-works.com    | 3             | 1/7/2020          |
+| 11003       | Christy   | Zhu      | F      | christy12@adventure-works.com  | 0             | 12/29/2019        |
+| 11004       | Elizabeth | Johnson  | F      | elizabeth5@adventure-works.com | 5             | 1/23/2020         |
