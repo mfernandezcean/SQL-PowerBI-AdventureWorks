@@ -69,4 +69,15 @@ JOIN DimCustomer c ON s.CustomerKey = c.CustomerKey
 JOIN DimSalesTerritory g ON s.SalesTerritoryKey = g.SalesTerritoryKey
 ORDER BY s.OrderDate DESC;
 ```
-
+| SalesOrderNumber | OrderDate | CustomerKey | FirstName | LastName  | SalesTerritoryRegion | SalesTerritoryCountry | SalesAmount | TaxAmt | Freight |
+|------------------|-----------|-------------|-----------|-----------|----------------------|-----------------------|-------------|--------|---------|
+| SO75084          | 00:00.0   | 11078       | Gina      | Martin    | Canada               | Canada                | 120         | 9.6    | 3       |
+| SO75085          | 00:00.0   | 11927       | Nicole    | Murphy    | Northwest            | United States         | 8.99        | 0.7192 | 0.2248  |
+| SO75085          | 00:00.0   | 11927       | Nicole    | Murphy    | Northwest            | United States         | 7.95        | 0.636  | 0.1988  |
+| SO75086          | 00:00.0   | 28789       | Elijah    | Zhang     | Southwest            | United States         | 7.95        | 0.636  | 0.1988  |
+| SO75087          | 00:00.0   | 11794       | Lauren    | Ross      | Southwest            | United States         | 34.99       | 2.7992 | 0.8748  |
+| SO75088          | 00:00.0   | 14680       | Marvin    | Munoz     | Australia            | Australia             | 3.99        | 0.3192 | 0.0998  |
+| SO75088          | 00:00.0   | 14680       | Marvin    | Munoz     | Australia            | Australia             | 24.99       | 1.9992 | 0.6248  |
+| SO75088          | 00:00.0   | 14680       | Marvin    | Munoz     | Australia            | Australia             | 34.99       | 2.7992 | 0.8748  |
+| SO75088          | 00:00.0   | 14680       | Marvin    | Munoz     | Australia            | Australia             | 49.99       | 3.9992 | 1.2498  |
+| SO75089          | 00:00.0   | 19585       | Kristi    | Fernandez | Australia            | Australia             | 21.49       | 1.7192 | 0.5373  |
