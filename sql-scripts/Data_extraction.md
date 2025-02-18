@@ -136,6 +136,19 @@ ORDER BY c.EnglishProductCategoryName, sc.EnglishProductSubcategoryName, p.Engli
 | 13         | Chain Stays     | NA    | 0            | 0         | No Subcategory | No Category |
 
 ---
+## 📌 Geographic Sales Analysis  
+
+This query extracts **total sales by country, state, and city**, helping us analyze **regional sales performance**.  
+
+### 🔹 Why This Matters:  
+✅ Identifies **top-performing locations**  
+✅ Helps **optimize marketing strategies** by region  
+✅ Provides insights for **expansion opportunities**  
+
+### 🔹 Key Insights:  
+- **Australia dominates** with the highest sales, especially in **New South Wales and Victoria**.  
+- **Bellflower, California (US)** is the **top US city** for sales.  
+- **Queensland cities like Brisbane and Townsville** are strong performers.  
 
 ```sql
 SELECT 
