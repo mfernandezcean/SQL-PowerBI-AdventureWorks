@@ -51,3 +51,38 @@ SELECT * FROM CleanCustomers;
 | 11002       | Ruben     | Torres   | M      | ruben35@adventure-works.com    | 3             | 1/7/2020          |
 | 11003       | Christy   | Zhu      | F      | christy12@adventure-works.com  | 0             | 12/29/2019        |
 | 11004       | Elizabeth | Johnson  | F      | elizabeth5@adventure-works.com | 5             | 1/23/2020         |
+
+---
+
+-- 📌 Format and Categorize Sales Data  
+```sql
+-- 📌 Summarize Sales Data by Spending Category  
+SELECT 
+    SpendingCategory,
+    COUNT(DISTINCT CustomerKey) AS TotalCustomers,
+    COUNT(SalesOrderNumber) AS TotalOrders,
+    SUM(SalesAmount) AS TotalSales,
+    AVG(SalesAmount) AS AvgSalesPerOrder
+FROM (
+    SELECT 
+        s.SalesOrderNumber,
+        s.CustomerKey,
+        s.SalesAmount,
+        CASE 
+            WHEN s.SalesAmount < 100 THEN 'Low'
+            WHEN s.SalesAmount BETWEEN 100 AND 500 THEN 'Medium'
+            ELSE 'High' 
+        END AS SpendingCategory
+    FROM FactInternetSales s
+) AS CategorizedSales
+GROUP BY SpendingCategory
+ORDER BY TotalSales DESC;
+
+
+```
+
+| SpendingCategory | TotalCustomers      | TotalOrders              | TotalSales              | AvgSalesPerOrder      |
+|------------------|---------------------|--------------------------|-------------------------|-----------------------|
+| High             |           9,132.0   |                15,205    |  $     28,318,144.7     |  $         1,862.4    |
+| Low              |         16,980.0    |                44,616    |  $          961,581.6   |  $              21.6  |
+| Medium           |              561.0  |                     577  |  $            78,951.0  |  $            136.8   |
