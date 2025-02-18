@@ -51,7 +51,7 @@ ORDER BY TotalSpent DESC;
 11433	|Maurice	|Shan	|12909.67
 
 ---
-##  🔹 Extract the top 10 sales transactions
+##  🔹 Extract the Top 10 Sales Transactions
 ```sql
 SELECT Top 10 
     s.SalesOrderNumber,
