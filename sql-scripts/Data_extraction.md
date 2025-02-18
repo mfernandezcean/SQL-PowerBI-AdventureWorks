@@ -27,5 +27,25 @@ Before performing analysis in **Power BI**, we must:
 > 💡 **Tip:** Save the extracted data as a **view** or **temporary table** for easier access in Power BI.  
 
 ---
+## 🔹 Extract Customer Sales Summary  
 
-📌 **Next Step:** After extraction, move to **[Data Transformation](../data_transformation/README.md)** 🚀  
+```sql
+SELECT c.CustomerKey, c.FirstName, c.LastName, SUM(s.SalesAmount) AS TotalSpent
+FROM FactInternetSales s
+JOIN DimCustomer c ON s.CustomerKey = c.CustomerKey
+GROUP BY c.CustomerKey, c.FirstName, c.LastName
+ORDER BY TotalSpent DESC;
+```
+📊 Query Results
+| CustomerKey |First Name  |Last Name | Total Spent |
+|--|--|--|--|
+12301		|Nichole	|	Nara|	13295.38
+12132	|Kaitlyn	|Henderson|	13294.27
+12308	|Margaret	|	He	|13269.27
+12131	|Randall	|Dominguez	|13265.99
+12300	|Adriana	|Gonzalez	|13242.70
+12123|	Rosa	|Hu	|13215.65
+12124	|Brandi	|Gill	|13195.64
+12307	|Brad	|She	|13173.19
+12296	|Francisco	|Sara	|13164.64
+11433	|Maurice	|Shan	|12909.67
