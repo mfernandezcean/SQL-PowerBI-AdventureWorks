@@ -86,3 +86,29 @@ ORDER BY TotalSales DESC;
 | High             |           9,132.0   |                15,205    |  $     28,318,144.7     |  $         1,862.4    |
 | Low              |         16,980.0    |                44,616    |  $          961,581.6   |  $              21.6  |
 | Medium           |              561.0  |                     577  |  $            78,951.0  |  $            136.8   |
+
+---
+```sql
+-- 📌 Total Sales by Product Category (Including 'No Category')
+-- Groups products by category and sums total sales, ensuring all products are included.
+
+SELECT 
+    COALESCE(c.EnglishProductCategoryName, 'No Category') AS Category,
+    COUNT(p.ProductKey) AS TotalProducts,
+    SUM(s.SalesAmount) AS TotalSales,
+    AVG(s.SalesAmount) AS AvgSalesPerProduct
+FROM FactInternetSales s
+JOIN DimProduct p ON s.ProductKey = p.ProductKey
+LEFT JOIN DimProductSubcategory sc ON p.ProductSubcategoryKey = sc.ProductSubcategoryKey
+LEFT JOIN DimProductCategory c ON sc.ProductCategoryKey = c.ProductCategoryKey
+GROUP BY ROLLUP (c.EnglishProductCategoryName)
+ORDER BY TotalSales DESC;
+```
+
+
+| Category    | TotalProducts         | TotalSales             | AvgSalesPerProduct   |
+|-------------|-----------------------|------------------------|----------------------|
+| No Category |           60,398.00   |  $     29,358,677.2    |  $          486.09   |
+| Bikes       |           15,205.00   |  $     28,318,144.7    |  $       1,862.42    |
+| Accessories |           36,092.00   |  $          700,760.0  |  $            19.42  |
+| Clothing    |             9,101.00  |  $          339,772.6  |  $            37.33  |
