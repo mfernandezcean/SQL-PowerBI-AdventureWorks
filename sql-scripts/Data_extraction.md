@@ -83,7 +83,7 @@ ORDER BY s.OrderDate DESC;
 | SO75089          | 00:00.0   | 19585       | Kristi    | Fernandez | Australia            | Australia             | 21.49       | 1.7192 | 0.5373  |
 
 ---
-Products 
+
 ## 📌 Handling NULL Values in Product Data  
 
 We noticed that our **product data contains many NULL values**, especially in **categories, subcategories, and pricing fields**.  
@@ -126,4 +126,12 @@ FROM DimProduct p
 LEFT JOIN DimProductSubcategory sc ON p.ProductSubcategoryKey = sc.ProductSubcategoryKey
 LEFT JOIN DimProductCategory c ON sc.ProductCategoryKey = c.ProductCategoryKey
 ORDER BY c.EnglishProductCategoryName, sc.EnglishProductSubcategoryName, p.EnglishProductName;
+```
+| ProductKey | ProductName     | Color | StandardCost | ListPrice | Subcategory    | Category    |
+|------------|-----------------|-------|--------------|-----------|----------------|-------------|
+| 1          | Adjustable Race | NA    | 0            | 0         | No Subcategory | No Category |
+| 3          | BB Ball Bearing | NA    | 0            | 0         | No Subcategory | No Category |
+| 2          | Bearing Ball    | NA    | 0            | 0         | No Subcategory | No Category |
+| 5          | Blade           | NA    | 0            | 0         | No Subcategory | No Category |
+| 13         | Chain Stays     | NA    | 0            | 0         | No Subcategory | No Category |
 
