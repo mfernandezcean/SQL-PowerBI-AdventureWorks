@@ -81,3 +81,49 @@ ORDER BY s.OrderDate DESC;
 | SO75088          | 00:00.0   | 14680       | Marvin    | Munoz     | Australia            | Australia             | 34.99       | 2.7992 | 0.8748  |
 | SO75088          | 00:00.0   | 14680       | Marvin    | Munoz     | Australia            | Australia             | 49.99       | 3.9992 | 1.2498  |
 | SO75089          | 00:00.0   | 19585       | Kristi    | Fernandez | Australia            | Australia             | 21.49       | 1.7192 | 0.5373  |
+
+---
+Products 
+## 📌 Handling NULL Values in Product Data  
+
+We noticed that our **product data contains many NULL values**, especially in **categories, subcategories, and pricing fields**.  
+
+### **🔹 Why Does This Happen?**  
+NULL values appear when:  
+- Some products **don’t have assigned categories or subcategories**.  
+- Data is **incomplete or missing** in the source tables.  
+- We use **LEFT JOIN**, which includes all products even if they have no matching categories.  
+
+---
+
+### **🔹 Different Approaches to Handle NULLs**  
+When dealing with missing data, we have several options:  
+
+1️⃣ **Remove NULL values entirely** (Use `INNER JOIN`)  
+2️⃣ **Fill missing values with placeholders** (Use `COALESCE()`)  
+3️⃣ **Impute missing values using averages, medians, or defaults**  
+
+👉 Learn more about handling NULLs: [Prepping Data](https://www.preppindata.com/howto/how-to-deal-with-nulls)  
+
+---
+
+### **✅ Our Solution: Using COALESCE()**  
+We chose **COALESCE()** because:  
+✔️ **Fast** → Simple and efficient SQL function  
+✔️ **Clear** → Makes missing data easy to understand  
+✔️ **Keeps all products** → Even those without categories  
+
+```sql
+SELECT 
+    p.ProductKey,
+    p.EnglishProductName AS ProductName,
+    COALESCE(p.Color, 'No Color') AS Color,
+    COALESCE(p.StandardCost, 0) AS StandardCost,
+    COALESCE(p.ListPrice, 0) AS ListPrice,
+    COALESCE(sc.EnglishProductSubcategoryName, 'No Subcategory') AS Subcategory,
+    COALESCE(c.EnglishProductCategoryName, 'No Category') AS Category
+FROM DimProduct p
+LEFT JOIN DimProductSubcategory sc ON p.ProductSubcategoryKey = sc.ProductSubcategoryKey
+LEFT JOIN DimProductCategory c ON sc.ProductCategoryKey = c.ProductCategoryKey
+ORDER BY c.EnglishProductCategoryName, sc.EnglishProductSubcategoryName, p.EnglishProductName;
+
