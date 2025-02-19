@@ -24,5 +24,40 @@ For example:
 
 By analyzing these factors, we can better **understand customer preferences** and **tailor marketing and sales strategies accordingly**. 🚀  
 
-📌 **Next Step:** Analyze how bike sales differ based on car ownership in [Bike Purchase Analysis](../data_analysis/README.md)  
 
+## 🚗 Customer Car Ownership Analysis  
+
+### ❓ What Are We Analyzing?  
+This query **categorizes customers based on the number of cars they own** and calculates their **percentage in the total customer base**.  
+
+Understanding car ownership helps us:  
+✅ **Segment customers** based on lifestyle and purchasing power  
+✅ **Identify trends in transportation preferences**  
+✅ **Predict potential interest in related products like bikes**  
+
+---
+
+## 📝 **SQL Query:**
+```sql
+SELECT 
+    CASE 
+        WHEN NumberCarsOwned >= 2 THEN 'Owns 2 or more'
+        WHEN NumberCarsOwned = 1 THEN '1 car'
+        ELSE 'Zero cars' 
+    END AS customers_cars,
+    COUNT(CustomerKey) AS total_customers,
+    (COUNT(CustomerKey) * 100.0 / SUM(COUNT(CustomerKey)) OVER ()) AS percentage_customers
+FROM DimCustomer
+GROUP BY 
+    CASE 
+        WHEN NumberCarsOwned >= 2 THEN 'Owns 2 or more'
+        WHEN NumberCarsOwned = 1 THEN '1 car'
+        ELSE 'Zero cars' 
+    END
+ORDER BY percentage_customers DESC;
+```
+| customers_cars | total_customers         | percentage_customers |
+|----------------|-------------------------|----------------------|
+| Owns 2 or more |                  9,363  | 50.65                |
+| 1 car          |                  4,883  | 26.42                |
+| Zero cars      |                  4,238  | 22.93                |
