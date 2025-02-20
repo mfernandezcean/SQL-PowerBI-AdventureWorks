@@ -1,3 +1,5 @@
+## Income 💰:
+
 ```sql
 WITH IncomeGroups AS (
     SELECT 
