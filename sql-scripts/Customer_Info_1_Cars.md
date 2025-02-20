@@ -61,3 +61,53 @@ ORDER BY percentage_customers DESC;
 | Owns 2 or more |                  9,363  | 50.65                |
 | 1 car          |                  4,883  | 26.42                |
 | Zero cars      |                  4,238  | 22.93                |
+
+## 🚗 Do Different Customers Buy Different Bikes?
+We suspect that car ownership strongly influences what types of bikes and accessories customers purchase. This query helps us explore:
+
+✅ What bike models customers prefer
+✅ How preferences change based on car ownership
+✅ Whether we can classify different customer types based on these trends
+
+
+So lets see what kind of Bikes and accesories they buy. We have the suspicioon that their are different type of customers. And that division is settled clearly by the ownership of cars
+
+```sql
+
+WITH BikePurchases AS (
+    SELECT 
+        C.NumberCarsOwned,
+        P.EnglishProductName AS BikeModel,
+        COUNT(S.SalesOrderNumber) AS PurchaseCount
+    FROM FactInternetSales S
+    JOIN DimCustomer C ON S.CustomerKey = C.CustomerKey
+    JOIN DimProduct P ON S.ProductKey = P.ProductKey
+    WHERE P.EnglishProductName LIKE '%Bike%'  -- Filtering only bikes
+    GROUP BY C.NumberCarsOwned, P.EnglishProductName
+)
+SELECT 
+    NumberCarsOwned, 
+    BikeModel, 
+    PurchaseCount,
+    ROUND((PurchaseCount * 100.0 / SUM(PurchaseCount) OVER (PARTITION BY NumberCarsOwned)), 2) AS Percentage
+FROM BikePurchases
+ORDER BY NumberCarsOwned, Percentage DESC;
+```
+
+| NumberCarsOwned | BikeModel              | PurchaseCount | Percentage |
+|-----------------|------------------------|---------------|------------|
+| 0               | Bike Wash - Dissolver  | 173           | 62.01      |
+| 0               | Hitch Rack - 4-Bike    | 59            | 21.15      |
+| 0               | All-Purpose Bike Stand | 47            | 16.85      |
+| 1               | Bike Wash - Dissolver  | 222           | 61.33      |
+| 1               | Hitch Rack - 4-Bike    | 82            | 22.65      |
+| 1               | All-Purpose Bike Stand | 58            | 16.02      |
+| 2               | Bike Wash - Dissolver  | 351           | 59.8       |
+| 2               | Hitch Rack - 4-Bike    | 138           | 23.51      |
+| 2               | All-Purpose Bike Stand | 98            | 16.7       |
+| 3               | Bike Wash - Dissolver  | 99            | 63.46      |
+| 3               | Hitch Rack - 4-Bike    | 32            | 20.51      |
+| 3               | All-Purpose Bike Stand | 25            | 16.03      |
+| 4               | Bike Wash - Dissolver  | 63            | 62.38      |
+| 4               | All-Purpose Bike Stand | 21            | 20.79      |
+| 4               | Hitch Rack - 4-Bike    | 17            | 16.83      |
