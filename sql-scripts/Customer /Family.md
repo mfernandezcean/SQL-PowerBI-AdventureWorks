@@ -90,3 +90,7 @@ ORDER BY TotalSpent DESC;
 | Bikes       | Touring Bikes   |                   624.0  |  $      1,112,339    | 12.88                  |
 | Accessories | Tires and Tubes |                4,877.0   |  $           68,772  | 0.8                    |
 | Accessories | Helmets         |                1,720.0   |  $           60,183  | 0.7                    |
+
+
+### With 1 or 2 Children:
+????
