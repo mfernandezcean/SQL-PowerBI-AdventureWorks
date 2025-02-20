@@ -52,3 +52,5 @@ ORDER BY TotalChildren;
 | 3             |                                      7,061.00    |  $          3,389,648  |  $                  480  |  $      6,327,968  |  $      (2,938,320)    |
 | 4             |                                      7,748.00    |  $          2,937,845  |  $                  379  |  $      3,389,648  |  $         (451,803)   |
 | 5             |                                      4,695.00    |  $          1,707,470  |  $                  364  |  $      2,937,845  |  $      (1,230,375)    |
+
+We have 3 different customer types. 1- No children, that are the one that buy the most. By far. 2 - With 1 and 2 children 3 - The rest
