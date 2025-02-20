@@ -65,9 +65,9 @@ ORDER BY percentage_customers DESC;
 ## 🚗 Do Different Customers Buy Different Bikes?
 We suspect that car ownership strongly influences what types of bikes and accessories customers purchase. This query helps us explore:
 
-✅ What bike models customers prefer
-✅ How preferences change based on car ownership
-✅ Whether we can classify different customer types based on these trends
+✅ **What bike models customers prefer**
+✅ **How preferences change based on car ownership**
+✅ **Whether we can classify different customer types based on these trends**
 
 
 So lets see what kind of Bikes and accesories they buy. We have the suspicioon that their are different type of customers. And that division is settled clearly by the ownership of cars
@@ -111,3 +111,12 @@ ORDER BY NumberCarsOwned, Percentage DESC;
 | 4               | Bike Wash - Dissolver  | 63            | 62.38      |
 | 4               | All-Purpose Bike Stand | 21            | 20.79      |
 | 4               | Hitch Rack - 4-Bike    | 17            | 16.83      |
+
+
+## 💡 What This Data Tells Us:
+
+🚲 **Customers with no cars** tend to buy **Touring bikes**, likely for transportation.  
+
+🚙 **Customers with 1 car** show a **balanced split** between **road bikes and mountain bikes**—probably for fitness or weekend rides.  
+
+🏎️ **Customers with 2+ cars** are **high spenders**, favoring **premium models**, but their **percentage of bike purchases is lower**.  
