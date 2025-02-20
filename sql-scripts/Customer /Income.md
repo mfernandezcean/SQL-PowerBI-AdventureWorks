@@ -33,3 +33,6 @@ ORDER BY TotalSpent DESC;
 | Middle Income ($50K - $100K) |                                           29,660   |  $        15,051,848   |  $                  507  |  $      10,555,878       |  $       4,495,970     |
 | Low Income (<$50K)           |                                           24,655   |  $        10,555,878   |  $                  428  |  $        3,750,951      |  $       6,804,927     |
 | High Income (>$100K)         |                                             6,083  |  $          3,750,951  |  $                  617  |  NULL                    |  NULL                  |
+
+We can see that in Average spent, High Income is up. But in total Spent, Middle Income is our batch.
+We must decide wich segment to chase. It seems, from this info, that Middle and also Low income are the target ones. 
