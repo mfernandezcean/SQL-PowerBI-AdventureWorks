@@ -54,3 +54,39 @@ ORDER BY TotalChildren;
 | 5             |                                      4,695.00    |  $          1,707,470  |  $                  364  |  $      2,937,845  |  $      (1,230,375)    |
 
 We have 3 different customer types. 1- No children, that are the one that buy the most. By far. 2 - With 1 and 2 children 3 - The rest
+
+## Let's go deeper. First, No Children 👶: 
+
+```sql
+WITH NoChildrenPurchases AS (
+    SELECT 
+        PC.EnglishProductCategoryName AS Category,  
+        SC.EnglishProductSubcategoryName AS Subcategory,  
+        COUNT(S.SalesOrderNumber) AS PurchaseCount,  
+        SUM(S.SalesAmount) AS TotalSpent,  
+        AVG(S.SalesAmount) AS AvgSpentPerPurchase  
+    FROM FactInternetSales S  
+    JOIN DimCustomer C ON S.CustomerKey = C.CustomerKey  
+    JOIN DimProduct P ON S.ProductKey = P.ProductKey  
+    LEFT JOIN DimProductSubcategory SC ON P.ProductSubcategoryKey = SC.ProductSubcategoryKey  
+    LEFT JOIN DimProductCategory PC ON SC.ProductCategoryKey = PC.ProductCategoryKey  
+    WHERE C.TotalChildren = 0   
+    GROUP BY PC.EnglishProductCategoryName, SC.EnglishProductSubcategoryName  
+)
+SELECT Top 5 
+    Category,  
+    Subcategory,  
+    PurchaseCount,  
+    TotalSpent,  
+    ROUND((TotalSpent * 100.0 / SUM(TotalSpent) OVER ()), 2) AS PercentageOfTotalSales  
+FROM NoChildrenPurchases  
+ORDER BY TotalSpent DESC;
+```
+
+| Category    | Subcategory     | PurchaseCount            | TotalSpent           | PercentageOfTotalSales |
+|-------------|-----------------|--------------------------|----------------------|------------------------|
+| Bikes       | Road Bikes      |                2,463.0   |  $      4,401,985    | 50.98                  |
+| Bikes       | Mountain Bikes  |                1,448.0   |  $      2,831,030    | 32.79                  |
+| Bikes       | Touring Bikes   |                   624.0  |  $      1,112,339    | 12.88                  |
+| Accessories | Tires and Tubes |                4,877.0   |  $           68,772  | 0.8                    |
+| Accessories | Helmets         |                1,720.0   |  $           60,183  | 0.7                    |
