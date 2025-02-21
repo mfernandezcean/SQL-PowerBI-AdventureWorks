@@ -17,7 +17,7 @@ Whether you're a **data analyst, business intelligence professional, or a Power 
 **In short:** This dataset provides everything needed to **extract insights, build reports, and create compelling dashboards** that mimic real-world business operations.  
 
 ---
-## 📊 Business Insights  
+## 📊💰 Business Insights  
 ### 🚴 How Commute Distance Affects Customer Spending  
 💡 **Key Finding:**  
 Customers who commute **0-1 miles** spend **30% more** on bike-related purchases.  
