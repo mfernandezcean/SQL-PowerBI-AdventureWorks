@@ -34,6 +34,9 @@ Customers who commute **0-1 miles** spend **30% more** on bike-related purchases
 
 🔗 **Full SQL analysis here:** [\[Commute.md\]](https://github.com/mfernandezcean/SQL-PowerBI-AdventureWorks/blob/main/sql-scripts/Customer%20/Commute.md)
 
+💡 **Future Analysis:**  
+- Analyze how **income level & commute distance** together influence purchases.  
+- Explore **seasonal trends** in commuter spending.  
 
 ---
 
