@@ -36,7 +36,9 @@ Customers who commute **0-1 miles** spend **30% more** on bike-related purchases
 
 💡 **Future Analysis:**  
 - Analyze how **income level & commute distance** together influence purchases.  
-- Explore **seasonal trends** in commuter spending.  
+- Explore **seasonal trends** in commuter spending.
+ 
+🔗 **Detailed Analysis:** [Business_Insights](https://github.com/mfernandezcean/SQL-PowerBI-AdventureWorks/tree/main/Business_Insights)
 
 ---
 
