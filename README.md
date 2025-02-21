@@ -17,6 +17,25 @@ Whether you're a **data analyst, business intelligence professional, or a Power 
 **In short:** This dataset provides everything needed to **extract insights, build reports, and create compelling dashboards** that mimic real-world business operations.  
 
 ---
+## 📊 Business Insights  
+### 🚴 How Commute Distance Affects Customer Spending  
+💡 **Key Finding:**  
+Customers who commute **0-1 miles** spend **30% more** on bike-related purchases.  
+
+📊 **Business Impact:**  
+- **Urban commuters represent a high-value customer segment** for bike retailers.  
+- **Short-distance customers buy more accessories** (helmets, locks, and bags).  
+- **Long-distance commuters (5+ miles) spend less on bikes**, likely relying on cars/public transport.  
+
+🎯 **Recommendations:**  
+✅ Create **"Urban Commuter Bundles"** (bike + lock + helmet).  
+✅ Run **geo-targeted marketing campaigns** in cities.  
+✅ Expand accessory offerings (smart locks, bike racks).  
+
+🔗 **Full SQL analysis here:** [\[Commute.md\]](https://github.com/mfernandezcean/SQL-PowerBI-AdventureWorks/blob/main/sql-scripts/Customer%20/Commute.md)
+
+
+---
 
 ### 📊 What's Inside AdventureWorksDW2022?  
 
